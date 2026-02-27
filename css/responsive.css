@@ -1,0 +1,28 @@
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-profile-bg svg { width: 45%; right: -5%; opacity: 0.5; }
+  .hero-metrics { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-image { display: none; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .features-row { grid-template-columns: 1fr 1fr; }
+  .cta-grid { grid-template-columns: 1fr; }
+  .footer-main { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .topbar { display: none; }
+  .nav-menu { display: none; }
+  .mobile-toggle { display: block; }
+  .container { padding: 0 1.25rem; }
+  .hero-content { padding: 3rem 1.25rem; }
+  .hero-metrics { grid-template-columns: 1fr 1fr; }
+  .section { padding: 3.5rem 0; }
+  .products-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .features-row { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-main { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+}
