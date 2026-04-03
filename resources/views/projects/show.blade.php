@@ -13,11 +13,11 @@
     @endif
     <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,7,75,0.9) 0%,rgba(0,7,75,0.4) 60%,rgba(0,7,75,0.2) 100%);"></div>
     <div class="container" style="position:absolute;bottom:0;left:0;right:0;padding-bottom:2.5rem;color:#fff;">
-      <a href="{{ route('projects') }}" style="display:inline-flex;align-items:center;gap:0.4rem;color:rgba(255,255,255,0.7);font-size:0.82rem;font-weight:600;text-decoration:none;margin-bottom:1rem;">
-        <svg viewBox="0 0 14 14" width="12" height="12"><path d="M11 7H3m3-3L3 7l3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      <a href="{{ route('projects') }}" style="display:inline-flex;align-items:center;gap:0.4rem;color:rgba(255,255,255,0.7) !important;font-size:0.82rem;font-weight:600;text-decoration:none;margin-bottom:1rem;">
+        <svg viewBox="0 0 14 14" width="12" height="12"><path d="M11 7H3m3-3L3 7l3 3" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
         Все проекты
       </a>
-      <h1 style="font-size:2.5rem;font-weight:800;line-height:1.2;margin-bottom:1rem;">{{ $project->title }}</h1>
+      <h1 style="font-size:2.5rem;font-weight:800;line-height:1.2;margin-bottom:1rem;color:#fff !important;">{{ $project->title }}</h1>
       <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
         @if($project->client)
           <div class="pj-info-chip">
@@ -46,7 +46,7 @@
 <section class="section" style="padding-top:2.5rem;">
   <div class="container" style="max-width:900px;">
     @if($project->description)
-      <p style="font-size:1.2rem;color:var(--gray-400);line-height:1.7;margin-bottom:2rem;font-weight:500;border-left:4px solid var(--blue);padding-left:1.25rem;">{{ $project->description }}</p>
+      <p style="font-size:1.2rem;color:#5a5f73;line-height:1.7;margin-bottom:2rem;font-weight:500;border-left:4px solid #193EEA;padding-left:1.25rem;">{{ $project->description }}</p>
     @endif
 
     @if($project->content)
@@ -61,7 +61,7 @@
 @if($project->gallery && count($project->gallery))
 <section style="padding:2rem 0 3rem;">
   <div class="container">
-    <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:1.25rem;color:var(--dark);">
+    <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:1.25rem;color:#1a1a2e;">
       <svg viewBox="0 0 20 20" width="20" height="20" fill="none" style="vertical-align:-3px;margin-right:0.4rem;"><rect x="1" y="1" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="1" width="8" height="5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="11" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="8" width="8" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
       Фотогалерея
     </h2>
@@ -100,10 +100,10 @@
 @if($other->count())
 <section class="section section-gray" style="padding-top:2.5rem;">
   <div class="container">
-    <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;color:var(--dark);">Другие проекты</h2>
+    <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;color:#1a1a2e;">Другие проекты</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;">
       @foreach($other as $o)
-        <a href="{{ route('project.show', $o) }}" class="pj-other-card reveal">
+        <a href="{{ route('project.show', $o) }}" class="pj-other-card reveal" style="color:#1a1a2e !important;">
           <div class="pj-other-img">
             @if($o->image)
               <img src="{{ asset('storage/' . $o->image) }}" alt="{{ $o->title }}">
@@ -112,8 +112,8 @@
             @endif
           </div>
           <div class="pj-other-body">
-            <h3>{{ $o->title }}</h3>
-            <div style="display:flex;gap:0.75rem;font-size:0.78rem;color:var(--gray-400);">
+            <h3 style="color:#1a1a2e !important;">{{ $o->title }}</h3>
+            <div style="display:flex;gap:0.75rem;font-size:0.78rem;color:#8a8fa3;">
               @if($o->location)<span>{{ $o->location }}</span>@endif
               @if($o->year)<span>{{ $o->year }}</span>@endif
             </div>
@@ -134,7 +134,7 @@
     font-size: 0.85rem; font-weight: 600;
   }
   .pj-content {
-    font-size: 1.05rem; line-height: 1.9; color: var(--dark);
+    font-size: 1.05rem; line-height: 1.9; color: #1a1a2e;
   }
 
   /* Gallery collage */
@@ -191,7 +191,7 @@
   .pj-other-img img { width:100%;height:100%;object-fit:cover;transition:transform 0.3s; }
   .pj-other-card:hover .pj-other-img img { transform:scale(1.05); }
   .pj-other-body { padding:1rem; }
-  .pj-other-body h3 { font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.25rem; }
+  .pj-other-body h3 { font-size:1rem;font-weight:700;color:#1a1a2e !important;margin-bottom:0.25rem; }
 
   @media(max-width:768px) {
     .gallery-collage { grid-template-columns:repeat(2,1fr);grid-auto-rows:150px; }

@@ -9,8 +9,8 @@
         <svg viewBox="0 0 16 16" width="14" height="14" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 5h6M5 8h4M5 11h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
         Обновления
       </div>
-      <h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.75rem;line-height:1.2;">{{ $title }}</h1>
-      <p style="font-size:1.05rem;opacity:0.7;line-height:1.6;">Следите за новостями компании и полезными статьями о профильных системах</p>
+      <h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.75rem;line-height:1.2;color:#fff !important;">{{ $title }}</h1>
+      <p style="font-size:1.05rem;color:rgba(255,255,255,0.7);line-height:1.6;">Следите за новостями компании и полезными статьями о профильных системах</p>
     </div>
 
     {{-- Type tabs --}}
@@ -47,13 +47,13 @@
             <span class="post-badge post-badge--{{ $featured->type }}">{{ $featured->type === 'news' ? 'Новость' : 'Блог' }}</span>
             @if($featured->published_at)<span style="font-size:0.82rem;color:var(--gray-400);">{{ $featured->published_at->format('d.m.Y') }}</span>@endif
           </div>
-          <h2 style="font-size:1.6rem;font-weight:800;color:var(--dark);line-height:1.3;margin-bottom:0.75rem;">{{ $featured->title }}</h2>
+          <h2 style="font-size:1.6rem;font-weight:800;color:#1a1a2e !important;line-height:1.3;margin-bottom:0.75rem;">{{ $featured->title }}</h2>
           @if($featured->excerpt)
-            <p style="font-size:0.95rem;color:var(--gray-400);line-height:1.6;margin-bottom:1rem;">{{ $featured->excerpt }}</p>
+            <p style="font-size:0.95rem;color:#5a5f73;line-height:1.6;margin-bottom:1rem;">{{ $featured->excerpt }}</p>
           @endif
-          <span style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.88rem;font-weight:600;color:var(--blue);">
+          <span style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.88rem;font-weight:600;color:#193EEA;">
             Читать далее
-            <svg viewBox="0 0 14 14" width="14" height="14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 14 14" width="14" height="14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="#193EEA" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
           </span>
         </div>
       </a>
@@ -82,18 +82,18 @@
               <span class="post-badge post-badge--{{ $post->type }}">{{ $post->type === 'news' ? 'Новость' : 'Блог' }}</span>
               @if($post->published_at)<span style="font-size:0.75rem;color:var(--gray-400);">{{ $post->published_at->format('d.m.Y') }}</span>@endif
             </div>
-            <h3 class="post-card-title">{{ $post->title }}</h3>
+            <h3 class="post-card-title" style="color:#1a1a2e !important;">{{ $post->title }}</h3>
             @if($post->excerpt)
-              <p class="post-card-excerpt">{{ Str::limit($post->excerpt, 100) }}</p>
+              <p class="post-card-excerpt" style="color:#5a5f73;">{{ Str::limit($post->excerpt, 100) }}</p>
             @endif
-            <span class="post-card-read">Читать <svg viewBox="0 0 12 12" width="10" height="10"><path d="M2 6h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg></span>
+            <span class="post-card-read" style="color:#193EEA !important;">Читать <svg viewBox="0 0 12 12" width="10" height="10"><path d="M2 6h8m-3-3l3 3-3 3" stroke="#193EEA" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg></span>
           </div>
         </a>
         @endif
       @empty
         <div style="grid-column:1/-1;text-align:center;padding:4rem 2rem;">
           <svg viewBox="0 0 48 48" width="48" height="48" style="color:var(--gray-300);margin-bottom:1rem;"><rect x="6" y="6" width="36" height="36" rx="4" stroke="currentColor" fill="none" stroke-width="2"/><path d="M14 18h20M14 24h14M14 30h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <p style="color:var(--gray-400);font-size:1.05rem;font-weight:500;">Пока нет публикаций</p>
+          <p style="color:#8a8fa3;font-size:1.05rem;font-weight:500;">Пока нет публикаций</p>
         </div>
       @endforelse
     </div>
@@ -149,9 +149,9 @@
   .post-card-img img { width:100%;height:100%;object-fit:cover;transition:transform 0.3s; }
   .post-card:hover .post-card-img img { transform:scale(1.05); }
   .post-card-body { padding:1.25rem;flex:1;display:flex;flex-direction:column; }
-  .post-card-title { font-size:1.05rem;font-weight:700;color:var(--dark);line-height:1.35;margin-bottom:0.4rem; }
-  .post-card-excerpt { font-size:0.83rem;color:var(--gray-400);line-height:1.5;flex:1;margin-bottom:0.5rem; }
-  .post-card-read { font-size:0.82rem;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:0.3rem; }
+  .post-card-title { font-size:1.05rem;font-weight:700;color:#1a1a2e !important;line-height:1.35;margin-bottom:0.4rem; }
+  .post-card-excerpt { font-size:0.83rem;color:#5a5f73;line-height:1.5;flex:1;margin-bottom:0.5rem; }
+  .post-card-read { font-size:0.82rem;font-weight:600;color:#193EEA !important;display:inline-flex;align-items:center;gap:0.3rem; }
 
   @media(max-width:768px) {
     .post-featured { grid-template-columns:1fr; }
