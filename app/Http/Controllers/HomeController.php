@@ -50,6 +50,8 @@ class HomeController extends Controller
 
     public function category(Category $category)
     {
+        $category->load('parent.parent', 'children');
+
         $descendantIds = $category->getDescendantIds();
         $descendantIds[] = $category->id;
 

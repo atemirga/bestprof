@@ -30,16 +30,7 @@
     </a>
     <ul class="nav-menu">
       <li><a href="{{ route('home') }}#about">О компании</a></li>
-      <li>
-        <a href="{{ route('home') }}#catalog">Продукция <svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg></a>
-        <div class="dropdown">
-          @isset($rootCategories)
-            @foreach($rootCategories as $cat)
-              <a href="{{ route('catalog.category', $cat) }}">{{ $cat->name }}</a>
-            @endforeach
-          @endisset
-        </div>
-      </li>
+      <li><a href="{{ route('catalog') }}">Каталог</a></li>
       <li><a href="{{ route('home') }}#services">Услуги</a></li>
       <li><a href="{{ route('home') }}#partners">Партнёры</a></li>
       <li><a href="{{ route('home') }}#contact">Контакты</a></li>
