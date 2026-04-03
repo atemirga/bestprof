@@ -7,7 +7,7 @@
     @if($project->image)
       <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" style="width:100%;height:100%;object-fit:cover;">
     @else
-      <div style="width:100%;height:100%;background:linear-gradient(135deg,#00074B,#193EEA);"></div>
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#00074B,#0b1854);"></div>
     @endif
     <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,7,75,0.8) 0%,rgba(0,7,75,0.2) 60%,transparent 100%);"></div>
     <div class="container" style="position:absolute;bottom:0;left:0;right:0;padding-bottom:2.5rem;color:#fff;">

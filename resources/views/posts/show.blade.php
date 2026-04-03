@@ -2,7 +2,7 @@
 
 @section('content')
 {{-- Hero --}}
-<section style="padding-top:5.5rem;background:linear-gradient(135deg,#00074B 0%,#0a1a5c 60%,#193EEA 100%);color:#fff;padding-bottom:2.5rem;">
+<section style="padding-top:5.5rem;background:linear-gradient(135deg,#00074B 0%,#050e3a 60%,#0b1854 100%);color:#fff;padding-bottom:2.5rem;">
   <div class="container" style="max-width:800px;">
     <a href="{{ $post->type === 'news' ? route('news') : route('blog') }}" style="display:inline-flex;align-items:center;gap:0.4rem;color:rgba(255,255,255,0.6);font-size:0.82rem;font-weight:600;text-decoration:none;margin-bottom:1.5rem;">
       <svg viewBox="0 0 14 14" width="12" height="12"><path d="M11 7H3m3-3L3 7l3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>

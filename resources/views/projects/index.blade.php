@@ -2,7 +2,7 @@
 
 @section('content')
 {{-- Hero banner --}}
-<section style="padding-top:5.5rem;background:linear-gradient(135deg,#00074B 0%,#0a1a5c 50%,#193EEA 100%);color:#fff;padding-bottom:3.5rem;">
+<section style="padding-top:5.5rem;background:linear-gradient(135deg,#00074B 0%,#050e3a 50%,#0b1854 100%);color:#fff;padding-bottom:3.5rem;">
   <div class="container">
     <div style="max-width:680px;margin:0 auto;text-align:center;">
       <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.1);padding:0.35rem 1rem;border-radius:50px;font-size:0.78rem;font-weight:600;margin-bottom:1.25rem;backdrop-filter:blur(8px);">
