@@ -31,8 +31,8 @@
     <ul class="nav-menu">
       <li><a href="{{ route('home') }}#about">О компании</a></li>
       <li><a href="{{ route('catalog') }}">Каталог</a></li>
-      <li><a href="{{ route('home') }}#services">Услуги</a></li>
-      <li><a href="{{ route('home') }}#partners">Партнёры</a></li>
+      <li><a href="{{ route('projects') }}">Наши работы</a></li>
+      <li><a href="{{ route('news') }}">Новости</a></li>
       <li><a href="{{ route('home') }}#contact">Контакты</a></li>
     </ul>
     <a href="{{ route('home') }}#contact" class="header-cta">

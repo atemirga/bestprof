@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Product;
+use App\Models\Project;
 use App\Models\Setting;
 use App\Models\Page;
 
@@ -27,7 +29,13 @@ class HomeController extends Controller
 
         $settings = Setting::all()->pluck('value', 'key');
 
-        return view('home', compact('page', 'blocks', 'rootCategories', 'products', 'settings'));
+        $latestPosts = Post::published()->orderByDesc('published_at')->limit(3)->get();
+        $featuredProjects = Project::published()->featured()->orderBy('sort_order')->limit(4)->get();
+        if ($featuredProjects->isEmpty()) {
+            $featuredProjects = Project::published()->orderBy('sort_order')->limit(4)->get();
+        }
+
+        return view('home', compact('page', 'blocks', 'rootCategories', 'products', 'settings', 'latestPosts', 'featuredProjects'));
     }
 
     public function catalog()
@@ -82,5 +90,46 @@ class HomeController extends Controller
             ->get();
 
         return view('product', compact('product', 'settings', 'related'));
+    }
+
+    public function news()
+    {
+        $posts = Post::published()->news()->orderByDesc('published_at')->paginate(12);
+        return view('posts.index', ['posts' => $posts, 'type' => 'news', 'title' => 'Новости']);
+    }
+
+    public function blog()
+    {
+        $posts = Post::published()->blog()->orderByDesc('published_at')->paginate(12);
+        return view('posts.index', ['posts' => $posts, 'type' => 'blog', 'title' => 'Блог']);
+    }
+
+    public function post(Post $post)
+    {
+        $recent = Post::published()
+            ->where('type', $post->type)
+            ->where('id', '!=', $post->id)
+            ->orderByDesc('published_at')
+            ->limit(3)
+            ->get();
+
+        return view('posts.show', compact('post', 'recent'));
+    }
+
+    public function projects()
+    {
+        $projects = Project::published()->orderBy('sort_order')->paginate(12);
+        return view('projects.index', compact('projects'));
+    }
+
+    public function project(Project $project)
+    {
+        $other = Project::published()
+            ->where('id', '!=', $project->id)
+            ->orderBy('sort_order')
+            ->limit(3)
+            ->get();
+
+        return view('projects.show', compact('project', 'other'));
     }
 }

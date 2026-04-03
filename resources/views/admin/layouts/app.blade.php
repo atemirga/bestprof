@@ -164,6 +164,14 @@
                href="{{ route('admin.products.index') }}">
                 <i class="bi bi-box-seam-fill"></i> Продукция
             </a>
+            <a class="nav-link {{ request()->routeIs('admin.posts.*') ? 'active' : '' }}"
+               href="{{ route('admin.posts.index') }}">
+                <i class="bi bi-newspaper"></i> Новости и блог
+            </a>
+            <a class="nav-link {{ request()->routeIs('admin.projects.*') ? 'active' : '' }}"
+               href="{{ route('admin.projects.index') }}">
+                <i class="bi bi-building"></i> Наши работы
+            </a>
             <a class="nav-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}"
                href="{{ route('admin.settings.index') }}">
                 <i class="bi bi-gear-fill"></i> Настройки

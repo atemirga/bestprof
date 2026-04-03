@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             SettingsSeeder::class,
             PageSeeder::class,
+            PostSeeder::class,
+            ProjectSeeder::class,
         ]);
     }
 }

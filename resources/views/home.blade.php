@@ -221,6 +221,92 @@
   </div>
 </section>
 
+{{-- ═══════ PROJECTS (Наши работы) ═══════ --}}
+@if($featuredProjects->count())
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">Портфолио</div>
+      <h2 class="section-title">Наши работы</h2>
+      <p class="section-desc">Реализованные проекты с использованием алюминиевых и ПВХ профильных систем</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;" class="reveal">
+      @foreach($featuredProjects as $proj)
+        <a href="{{ route('project.show', $proj) }}" style="text-decoration:none;background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:box-shadow 0.25s,transform 0.25s;" onmouseover="this.style.boxShadow='0 8px 30px rgba(0,0,0,0.08)';this.style.transform='translateY(-3px)';" onmouseout="this.style.boxShadow='';this.style.transform='';">
+          <div style="height:200px;overflow:hidden;position:relative;">
+            @if($proj->image)
+              <img src="{{ asset('storage/' . $proj->image) }}" alt="{{ $proj->title }}" style="width:100%;height:100%;object-fit:cover;">
+            @else
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;">
+                <svg viewBox="0 0 48 48" width="48" height="48" style="color:#fff;opacity:0.15;"><path d="M6 40V14l18-10 18 10v26H6z" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+              </div>
+            @endif
+          </div>
+          <div style="padding:1.1rem;">
+            <h3 style="font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.25rem;">{{ $proj->title }}</h3>
+            @if($proj->description)
+              <p style="font-size:0.82rem;color:var(--gray-400);line-height:1.4;margin:0;">{{ Str::limit($proj->description, 80) }}</p>
+            @endif
+            <div style="display:flex;gap:0.75rem;margin-top:0.5rem;font-size:0.75rem;color:var(--gray-300);">
+              @if($proj->location)<span>{{ $proj->location }}</span>@endif
+              @if($proj->year)<span>{{ $proj->year }}</span>@endif
+            </div>
+          </div>
+        </a>
+      @endforeach
+    </div>
+    <div style="text-align:center;margin-top:1.75rem;" class="reveal">
+      <a href="{{ route('projects') }}" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.75rem;border:2px solid var(--blue);color:var(--blue);border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--blue)';this.style.color='#fff';" onmouseout="this.style.background='';this.style.color='var(--blue)';">
+        Все проекты
+        <svg viewBox="0 0 14 14" width="14" height="14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+@endif
+
+{{-- ═══════ NEWS & BLOG ═══════ --}}
+@if($latestPosts->count())
+<section class="section section-gray" id="news">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">Обновления</div>
+      <h2 class="section-title">Новости и блог</h2>
+      <p class="section-desc">Последние новости компании и полезные статьи</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.25rem;" class="reveal">
+      @foreach($latestPosts as $p)
+        <a href="{{ route('post.show', $p) }}" style="text-decoration:none;display:flex;flex-direction:column;background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:box-shadow 0.25s,transform 0.25s;" onmouseover="this.style.boxShadow='0 8px 30px rgba(0,0,0,0.08)';this.style.transform='translateY(-3px)';" onmouseout="this.style.boxShadow='';this.style.transform='';">
+          <div style="height:190px;overflow:hidden;">
+            @if($p->image)
+              <img src="{{ asset('storage/' . $p->image) }}" alt="{{ $p->title }}" style="width:100%;height:100%;object-fit:cover;">
+            @else
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#f0f4ff,#e0e7ff);display:flex;align-items:center;justify-content:center;">
+                <svg viewBox="0 0 48 48" width="40" height="40" style="color:var(--blue);opacity:0.2;"><rect x="6" y="6" width="36" height="36" rx="4" stroke="currentColor" fill="none" stroke-width="2"/><path d="M6 32l10-10 8 8 6-6 12 12" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+              </div>
+            @endif
+          </div>
+          <div style="padding:1.25rem;flex:1;">
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+              <span style="font-size:0.72rem;font-weight:600;padding:0.15rem 0.5rem;border-radius:20px;{{ $p->type === 'news' ? 'background:#e8f5e9;color:#2e7d32;' : 'background:#e3f2fd;color:#1565c0;' }}">{{ $p->type === 'news' ? 'Новость' : 'Блог' }}</span>
+              @if($p->published_at)<span style="font-size:0.78rem;color:var(--gray-400);">{{ $p->published_at->format('d.m.Y') }}</span>@endif
+            </div>
+            <h3 style="font-size:1.05rem;font-weight:700;color:var(--dark);line-height:1.35;margin-bottom:0.35rem;">{{ $p->title }}</h3>
+            @if($p->excerpt)
+              <p style="font-size:0.83rem;color:var(--gray-400);line-height:1.45;margin:0;">{{ Str::limit($p->excerpt, 110) }}</p>
+            @endif
+          </div>
+        </a>
+      @endforeach
+    </div>
+    <div style="text-align:center;margin-top:1.75rem;" class="reveal">
+      <a href="{{ route('news') }}" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.75rem;border:2px solid var(--blue);color:var(--blue);border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.2s;margin-right:0.5rem;" onmouseover="this.style.background='var(--blue)';this.style.color='#fff';" onmouseout="this.style.background='';this.style.color='var(--blue)';">Все новости</a>
+      <a href="{{ route('blog') }}" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.75rem;border:2px solid var(--border);color:var(--dark);border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)';" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--dark)';">Блог</a>
+    </div>
+  </div>
+</section>
+@endif
+
 {{-- ═══════ SERVICES ═══════ --}}
 @if(isset($blocks['services']))
   @php $svc = $blocks['services']; @endphp
