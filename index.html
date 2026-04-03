@@ -46,11 +46,8 @@
           Продукция
           <svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4"/></svg>
         </a>
-        <div class="dropdown">
-          <a href="#catalog">Gold (алюминий)</a>
-          <a href="#catalog">AlProf (алюминий)</a>
-          <a href="#catalog">ПВХ-системы</a>
-          <a href="#catalog">ПВХ-фурнитура</a>
+        <div class="dropdown" id="navDropdown">
+          <!-- Populated dynamically -->
         </div>
       </li>
       <li><a href="#services">Услуги</a></li>
@@ -301,34 +298,17 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
-        <div class="hero-tag">
+        <div class="hero-tag" id="heroTag">
           <span class="hero-tag-dot"></span>
-          Производитель алюминиевых и пластиковых профильных систем
+          <span id="heroTagText"></span>
         </div>
-        <h1 class="hero-title">Профильные системы<br><em>премиум&#8209;класса</em></h1>
-        <p class="hero-desc">Производим алюминиевые и ПВХ-профили на собственном заводе в Алматы. Итальянская фурнитура, европейское качество.</p>
+        <h1 class="hero-title" id="heroTitle"></h1>
+        <p class="hero-desc" id="heroDesc"></p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Получить консультацию</a>
-          <a href="#catalog" class="btn btn-outline">Каталог продукции</a>
+          <a href="#contact" class="btn btn-primary" id="heroBtnPrimary"></a>
+          <a href="#catalog" class="btn btn-outline" id="heroBtnSecondary"></a>
         </div>
-        <div class="hero-metrics">
-          <div class="hero-metric">
-            <div class="hero-metric-val">13</div>
-            <div class="hero-metric-label">Систем в каталоге</div>
-          </div>
-          <div class="hero-metric">
-            <div class="hero-metric-val">30 лет</div>
-            <div class="hero-metric-label">Срок службы изделий</div>
-          </div>
-          <div class="hero-metric">
-            <div class="hero-metric-val">Giesse</div>
-            <div class="hero-metric-label">Итальянская фурнитура</div>
-          </div>
-          <div class="hero-metric">
-            <div class="hero-metric-val">ISO</div>
-            <div class="hero-metric-label">Сертификат качества</div>
-          </div>
-        </div>
+        <div class="hero-metrics" id="heroMetrics"></div>
       </div>
     </div>
   </div>
@@ -339,28 +319,11 @@
   <div class="container">
     <div class="about-grid reveal">
       <div>
-        <div class="section-label">О компании</div>
-        <h2 class="section-title">Надёжный партнёр в сфере<br>профильных конструкций</h2>
-        <p class="section-desc">Best Prof — казахстанский производитель премиальных алюминиевых и пластиковых профильных систем. Собственный завод, полный цикл производства и комплексные решения для строительных и интерьерных проектов любой сложности: от частных домов до коммерческих объектов.</p>
-        <p class="section-desc" style="margin-top: 0.75rem;">Наша миссия — производить продукцию европейского уровня на собственном заводе в Казахстане по оптимальным ценам, с полной технической поддержкой на каждом этапе: от проектирования до монтажа.</p>
-        <div class="about-stats">
-          <div class="about-stat">
-            <div class="about-stat-val">500 кг</div>
-            <div class="about-stat-label">Макс. вес створки</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-val">68 мм</div>
-            <div class="about-stat-label">Макс. стеклопакет</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-val">51 мм</div>
-            <div class="about-stat-label">Термобарьер (Viking 90)</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-val">5.5 м</div>
-            <div class="about-stat-label">Макс. высота перегородок</div>
-          </div>
-        </div>
+        <div class="section-label" id="aboutLabel"></div>
+        <h2 class="section-title" id="aboutTitle"></h2>
+        <p class="section-desc" id="aboutDesc"></p>
+        <p class="section-desc" style="margin-top: 0.75rem;" id="aboutDesc2"></p>
+        <div class="about-stats" id="aboutStats"></div>
       </div>
       <div class="about-image">
         <div class="about-image-inner">
@@ -377,28 +340,7 @@
 <!-- ═══════ FEATURES STRIP ═══════ -->
 <div class="features-strip">
   <div class="container" style="padding:0;">
-    <div class="features-row">
-      <div class="feature-cell">
-        <div class="feature-cell-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3-4.9-2.6-4.9 2.6.9-5.3-4-3.9 5.5-.8L10 2z" fill="white"/></svg></div>
-        <h4>Итальянская фурнитура</h4>
-        <p>Giesse, Monticelli, Dr. Hahn, FritsJurgens</p>
-      </div>
-      <div class="feature-cell">
-        <div class="feature-cell-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M4 4h12v12H4V4z" stroke="white" stroke-width="1.5"/><path d="M4 10h12M10 4v12" stroke="white" stroke-width="1"/></svg></div>
-        <h4>Полный каталог</h4>
-        <p>Алюминиевые (Gold, AlProf) и ПВХ профильные системы</p>
-      </div>
-      <div class="feature-cell">
-        <div class="feature-cell-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M3 10l5 5L17 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>Сертификация</h4>
-        <p>Полный пакет протоколов испытаний</p>
-      </div>
-      <div class="feature-cell">
-        <div class="feature-cell-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2v8l4 4" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.5"/></svg></div>
-        <h4>30+ лет службы</h4>
-        <p>Гарантированный срок эксплуатации</p>
-      </div>
-    </div>
+    <div class="features-row" id="featuresRow"></div>
   </div>
 </div>
 
@@ -406,301 +348,16 @@
 <section class="section section-gray" id="catalog">
   <div class="container">
     <div class="section-header center reveal">
-      <div class="section-label">Каталог продукции</div>
-      <h2 class="section-title">Алюминиевые и пластиковые профильные системы</h2>
-      <p class="section-desc">Алюминиевые профили Gold и AlProf, ПВХ-системы и фурнитура. Источник: ARJAN.KZ</p>
+      <div class="section-label" id="catalogLabel"></div>
+      <h2 class="section-title" id="catalogTitle"></h2>
+      <p class="section-desc" id="catalogDesc"></p>
     </div>
 
     <div class="cat-strip" style="margin-bottom: 2rem; border-radius: 8px; border: 1px solid var(--border);">
-      <div class="container cat-strip-inner" style="padding:0;">
-        <span class="cat-tab active">Все системы</span>
-        <span class="cat-tab">Gold (ALU)</span>
-        <span class="cat-tab">AlProf (ALU)</span>
-        <span class="cat-tab">ПВХ-системы</span>
-        <span class="cat-tab">ПВХ-фурнитура</span>
-      </div>
+      <div class="container cat-strip-inner" style="padding:0;" id="catalogTabs"></div>
     </div>
 
-    <div class="products-grid">
-
-      <!-- ===== GOLD ALU ===== -->
-      <div class="product-card reveal" data-category="gold">
-        <div class="product-card-img">
-          <div class="product-card-badge">Gold</div>
-          <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><line x1="24" y1="4" x2="24" y2="44" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type">Алюминиевый профиль · Cold</div>
-          <div class="product-card-name">Gold 45 Cold</div>
-          <div class="product-card-desc">Холодная алюминиевая профильная система 45 мм для остекления балконов, витрин и неотапливаемых помещений</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">45 мм</span>
-            <span class="spec-chip">Cold</span>
-            <span class="spec-chip">ALU</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">Gold</span>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-category="gold">
-        <div class="product-card-img">
-          <div class="product-card-badge">Gold</div>
-          <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><line x1="24" y1="4" x2="24" y2="44" stroke="currentColor" stroke-width="1" opacity="0.5"/><line x1="8" y1="24" x2="40" y2="24" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type">Алюминиевый профиль · Warm</div>
-          <div class="product-card-name">Gold 55 Warm</div>
-          <div class="product-card-desc">Тёплая алюминиевая система 55 мм с термобарьером для оконных и дверных конструкций жилых зданий</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">55 мм</span>
-            <span class="spec-chip">Warm</span>
-            <span class="spec-chip">Термобарьер</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">Gold</span>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-category="gold">
-        <div class="product-card-img">
-          <div class="product-card-badge">Gold</div>
-          <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><line x1="24" y1="4" x2="24" y2="44" stroke="currentColor" stroke-width="1" opacity="0.5"/><line x1="8" y1="24" x2="40" y2="24" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type">Алюминиевый профиль · Warm</div>
-          <div class="product-card-name">Gold 74 Warm</div>
-          <div class="product-card-desc">Премиальная тёплая алюминиевая система 74 мм с усиленным термобарьером для максимальной теплоизоляции</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">74 мм</span>
-            <span class="spec-chip">Warm</span>
-            <span class="spec-chip">Премиум</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">Gold</span>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-category="gold">
-        <div class="product-card-img">
-          <div class="product-card-badge">Gold</div>
-          <svg viewBox="0 0 48 48"><rect x="2" y="2" width="44" height="44" rx="1" stroke="currentColor" fill="none" stroke-width="1.2"/><line x1="2" y1="16" x2="46" y2="16" stroke="currentColor" stroke-width="0.8" opacity="0.4"/><line x1="2" y1="32" x2="46" y2="32" stroke="currentColor" stroke-width="0.8" opacity="0.4"/><line x1="16" y1="2" x2="16" y2="46" stroke="currentColor" stroke-width="0.8" opacity="0.4"/><line x1="32" y1="2" x2="32" y2="46" stroke="currentColor" stroke-width="0.8" opacity="0.4"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type">Алюминиевый профиль · Фасад</div>
-          <div class="product-card-name">Стоечно-ригельные системы</div>
-          <div class="product-card-desc">Фасадные стоечно-ригельные конструкции Gold для витражного остекления зданий и крупных коммерческих объектов</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">Фасад</span>
-            <span class="spec-chip">Витраж</span>
-            <span class="spec-chip">ALU</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">Gold</span>
-        </div>
-      </div>
-
-      <!-- ===== ALPROF ALU ===== -->
-      <div class="product-card reveal" data-category="alprof">
-        <div class="product-card-img">
-          <div class="product-card-badge">AlProf</div>
-          <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><line x1="24" y1="4" x2="24" y2="44" stroke="currentColor" stroke-width="1" opacity="0.5"/><line x1="8" y1="24" x2="40" y2="24" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type">Алюминиевый профиль · Warm</div>
-          <div class="product-card-name">AlProf 62 (теплый)</div>
-          <div class="product-card-desc">Тёплая алюминиевая оконно-дверная система 62 мм с термобарьером для жилого и коммерческого строительства</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">62 мм</span>
-            <span class="spec-chip">Тёплый</span>
-            <span class="spec-chip">ALU</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">AlProf</span>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-category="alprof">
-        <div class="product-card-img">
-          <div class="product-card-badge">AlProf</div>
-          <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><line x1="24" y1="4" x2="24" y2="44" stroke="currentColor" stroke-width="1" opacity="0.5"/><line x1="8" y1="24" x2="40" y2="24" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type">Алюминиевый профиль · Warm</div>
-          <div class="product-card-name">AlProf 72 (теплый)</div>
-          <div class="product-card-desc">Усиленная тёплая алюминиевая система 72 мм с повышенной теплоизоляцией для суровых климатических условий</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">72 мм</span>
-            <span class="spec-chip">Тёплый</span>
-            <span class="spec-chip">Усиленный</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">AlProf</span>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-category="alprof">
-        <div class="product-card-img">
-          <div class="product-card-badge">AlProf</div>
-          <svg viewBox="0 0 48 48"><rect x="4" y="4" width="16" height="40" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><rect x="28" y="4" width="16" height="40" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type">Алюминиевый профиль · HS Portal</div>
-          <div class="product-card-name">AlProf HS Portal (теплый) 176 мм</div>
-          <div class="product-card-desc">Подъёмно-сдвижная портальная система 176 мм с термобарьером для панорамного остекления больших проёмов</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">176 мм</span>
-            <span class="spec-chip">HS Portal</span>
-            <span class="spec-chip">Тёплый</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">AlProf</span>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-category="alprof">
-        <div class="product-card-img">
-          <div class="product-card-badge">AlProf</div>
-          <svg viewBox="0 0 48 48"><path d="M4 8h8v32H4zM14 8h8v32h-8zM24 8h8v32h-8zM34 8h8v32h-8z" stroke="currentColor" fill="none" stroke-width="1.2"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type">Алюминиевый профиль · Гармошка</div>
-          <div class="product-card-name">AlProf Гармошка (тёплый) 62 мм</div>
-          <div class="product-card-desc">Складная тёплая алюминиевая система 62 мм для террас, веранд и панорамных выходов на улицу</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">62 мм</span>
-            <span class="spec-chip">Гармошка</span>
-            <span class="spec-chip">Тёплый</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">AlProf</span>
-        </div>
-      </div>
-
-      <!-- ===== ПВХ СИСТЕМЫ ===== -->
-      <div class="product-card reveal" data-category="pvh">
-        <div class="product-card-img" style="background: linear-gradient(135deg, #EEF2FF, #E0E7FF);">
-          <div class="product-card-badge" style="background: #2563EB;">ПВХ</div>
-          <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><line x1="24" y1="4" x2="24" y2="44" stroke="currentColor" stroke-width="1" opacity="0.5"/><line x1="8" y1="24" x2="40" y2="24" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type" style="color: #2563EB;">ПВХ-система · 3 камеры</div>
-          <div class="product-card-name">Sapa 60 (3-камерный)</div>
-          <div class="product-card-desc">Экономичная пластиковая оконная система 60 мм с 3-камерным профилем для стандартного жилого строительства</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">60 мм</span>
-            <span class="spec-chip">3 камеры</span>
-            <span class="spec-chip">ПВХ</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">Grunder</span>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-category="pvh">
-        <div class="product-card-img" style="background: linear-gradient(135deg, #EEF2FF, #E0E7FF);">
-          <div class="product-card-badge" style="background: #2563EB;">ПВХ</div>
-          <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><line x1="24" y1="4" x2="24" y2="44" stroke="currentColor" stroke-width="1" opacity="0.5"/><line x1="8" y1="24" x2="40" y2="24" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type" style="color: #2563EB;">ПВХ-система · 4-5 камер</div>
-          <div class="product-card-name">Funke (4-5 камерные)</div>
-          <div class="product-card-desc">Многокамерная пластиковая система Funke с 4-5 камерами для повышенной тепло- и шумоизоляции</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">4-5 камер</span>
-            <span class="spec-chip">Теплоизоляция</span>
-            <span class="spec-chip">ПВХ</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">Grunder</span>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-category="pvh">
-        <div class="product-card-img" style="background: linear-gradient(135deg, #EEF2FF, #E0E7FF);">
-          <div class="product-card-badge" style="background: #2563EB;">ПВХ</div>
-          <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="2" stroke="currentColor" fill="none" stroke-width="1.5"/><line x1="24" y1="4" x2="24" y2="44" stroke="currentColor" stroke-width="1" opacity="0.5"/><line x1="8" y1="24" x2="40" y2="24" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type" style="color: #2563EB;">ПВХ-система · 4-5 камер</div>
-          <div class="product-card-name">Seiger WDF (4-5 камерные)</div>
-          <div class="product-card-desc">Профильная система Seiger WDF с 4-5 камерным сечением для высококачественного остекления жилых объектов</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">4-5 камер</span>
-            <span class="spec-chip">WDF</span>
-            <span class="spec-chip">ПВХ</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">Grunder</span>
-        </div>
-      </div>
-
-      <!-- ===== ПВХ ФУРНИТУРА ===== -->
-      <div class="product-card reveal" data-category="pvh-furn">
-        <div class="product-card-img" style="background: linear-gradient(135deg, #F0FDF4, #DCFCE7);">
-          <div class="product-card-badge" style="background: #16A34A;">Фурнитура</div>
-          <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" stroke="currentColor" fill="none" stroke-width="1.5"/><path d="M24 12v24M12 24h24" stroke="currentColor" stroke-width="1" opacity="0.5"/><circle cx="24" cy="24" r="6" stroke="currentColor" fill="none" stroke-width="1"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type" style="color: #16A34A;">ПВХ-фурнитура</div>
-          <div class="product-card-name">Fores</div>
-          <div class="product-card-desc">Надёжная фурнитура Fores для пластиковых оконных и дверных конструкций. Поворотно-откидные механизмы и запирающие системы</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">Поворотно-откидная</span>
-            <span class="spec-chip">ПВХ</span>
-            <span class="spec-chip">Fores</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">Фурнитура</span>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-category="pvh-furn">
-        <div class="product-card-img" style="background: linear-gradient(135deg, #F0FDF4, #DCFCE7);">
-          <div class="product-card-badge" style="background: #16A34A;">Фурнитура</div>
-          <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" stroke="currentColor" fill="none" stroke-width="1.5"/><path d="M24 12v24M12 24h24" stroke="currentColor" stroke-width="1" opacity="0.5"/><circle cx="24" cy="24" r="6" stroke="currentColor" fill="none" stroke-width="1"/></svg>
-        </div>
-        <div class="product-card-body">
-          <div class="product-card-type" style="color: #16A34A;">ПВХ-фурнитура</div>
-          <div class="product-card-name">WinkHaus</div>
-          <div class="product-card-desc">Премиальная немецкая фурнитура WinkHaus для ПВХ-систем. Многоточечное запирание, высокая взломостойкость и долговечность</div>
-          <div class="product-card-specs">
-            <span class="spec-chip">Многоточечная</span>
-            <span class="spec-chip">Германия</span>
-            <span class="spec-chip">WinkHaus</span>
-          </div>
-        </div>
-        <div class="product-card-footer">
-          <span class="product-card-link">Подробнее <svg viewBox="0 0 14 14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
-          <span class="product-card-hardware">Фурнитура</span>
-        </div>
-      </div>
-
-    </div>
+    <div class="products-grid" id="productsGrid"></div>
   </div>
 </section>
 
@@ -708,42 +365,11 @@
 <section class="section" id="services">
   <div class="container">
     <div class="section-header center reveal">
-      <div class="section-label">Наши услуги</div>
-      <h2 class="section-title">Комплексное сопровождение проектов</h2>
-      <p class="section-desc">От первичной консультации до финальной сдачи объекта — полный спектр услуг для реализации ваших проектов</p>
+      <div class="section-label" id="servicesLabel"></div>
+      <h2 class="section-title" id="servicesTitle"></h2>
+      <p class="section-desc" id="servicesDesc"></p>
     </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 22 22" fill="none"><path d="M3 19V7l8-5 8 5v12H3zm6-8v8m4-8v8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Проектирование</h3>
-        <p>Разработка проектной документации с учётом архитектурных особенностей объекта и климатических условий региона. Подбор оптимальных профильных систем.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 22 22" fill="none"><path d="M11 2v3m0 12v3m-9-9h3m12 0h3m-2.5-6.5l-2 2m-9 9l-2 2m13 0l-2-2m-9-9l-2-2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h3>Расчёт стоимости</h3>
-        <p>Точный расчёт стоимости проекта с учётом спецификации профилей, фурнитуры, стеклопакетов и комплектующих. Прозрачное ценообразование.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 22 22" fill="none"><path d="M4 17V5a2 2 0 012-2h10a2 2 0 012 2v12M2 17h18M7 9h8M7 13h5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Техническая документация</h3>
-        <p>Автоматические чертежи, раскрой профиля, размеры стеклопакетов, технический паспорт, схемы сборки и монтажа аксессуаров на все изделия.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 22 22" fill="none"><path d="M5 3h12a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm4 6l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Поставка профиля</h3>
-        <p>Оперативная поставка полного комплекта профилей, фурнитуры и комплектующих со склада в Алматы. Доставка по всему Казахстану.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 22 22" fill="none"><path d="M14 2l5 5-12 12H2v-5L14 2z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Техническая поддержка</h3>
-        <p>Консультации по сборке и монтажу алюминиевых и ПВХ-систем. Пошаговые инструкции и помощь специалиста на каждом этапе работы с профилем.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 22 22" fill="none"><path d="M17 8l-5 5-3-3-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 8h3v3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Гарантийное обслуживание</h3>
-        <p>Гарантия на все поставляемые профильные системы. Оперативная замена комплектующих и техническое обслуживание в гарантийный период.</p>
-      </div>
-    </div>
+    <div class="services-grid" id="servicesGrid"></div>
   </div>
 </section>
 
@@ -751,18 +377,11 @@
 <section class="section section-gray" id="partners">
   <div class="container">
     <div class="section-header center reveal">
-      <div class="section-label">Партнёры и производители</div>
-      <h2 class="section-title">Мировые бренды фурнитуры</h2>
-      <p class="section-desc">Мы работаем исключительно с проверенными европейскими производителями фурнитуры и комплектующих</p>
+      <div class="section-label" id="partnersLabel"></div>
+      <h2 class="section-title" id="partnersTitle"></h2>
+      <p class="section-desc" id="partnersDesc"></p>
     </div>
-    <div class="partners-grid reveal">
-      <span class="partner-item">BestProf</span>
-      <span class="partner-item">Giesse</span>
-      <span class="partner-item">Monticelli</span>
-      <span class="partner-item">Dr. Hahn</span>
-      <span class="partner-item">FritsJurgens</span>
-      <span class="partner-item">Laminam</span>
-    </div>
+    <div class="partners-grid reveal" id="partnersGrid"></div>
   </div>
 </section>
 
@@ -771,26 +390,13 @@
   <div class="container">
     <div class="cta-grid">
       <div class="reveal">
-        <div class="section-label" style="color: rgba(255,255,255,0.4);">Свяжитесь с нами</div>
-        <h2>Получите персональное коммерческое предложение</h2>
-        <p class="section-desc">Оставьте заявку и наш специалист свяжется с вами для подбора оптимального решения, расчёта стоимости и формирования коммерческого предложения.</p>
-        <div class="cta-info-row">
-          <div class="cta-info-item">
-            <h5>Телефон</h5>
-            <a href="tel:+77010559900">+7 701 055 99 00</a>
-          </div>
-          <div class="cta-info-item">
-            <h5>Email</h5>
-            <a href="mailto:info@bestprof.kz">info@bestprof.kz</a>
-          </div>
-          <div class="cta-info-item">
-            <h5>Адрес</h5>
-            <p>г. Алматы, ул. Новгородская, 172Б</p>
-          </div>
-        </div>
+        <div class="section-label" style="color: rgba(255,255,255,0.4);" id="contactLabel"></div>
+        <h2 id="contactTitle"></h2>
+        <p class="section-desc" id="contactDesc"></p>
+        <div class="cta-info-row" id="contactInfoRow"></div>
       </div>
       <div class="cta-form-card reveal">
-        <h3>Заявка на консультацию</h3>
+        <h3 id="contactFormTitle"></h3>
         <div class="form-row">
           <div class="form-group">
             <label>Имя</label>
@@ -809,7 +415,7 @@
           <label>Описание проекта</label>
           <textarea class="form-input" placeholder="Опишите ваш проект или задачу..."></textarea>
         </div>
-        <button class="form-submit">Отправить заявку</button>
+        <button class="form-submit" id="formSubmitBtn">Отправить заявку</button>
       </div>
     </div>
   </div>
@@ -818,81 +424,14 @@
 <!-- ═══════ FOOTER ═══════ -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-main">
-      <div>
-        <a href="#" class="logo" style="margin-bottom: 0;">
-          <div class="logo-mark"></div>
-          <div class="logo-text" style="color: #fff;">Best<span>Prof</span></div>
-        </a>
-        <p class="footer-brand-text">Казахстанский производитель премиальных алюминиевых и пластиковых профильных систем. Собственный завод, полный цикл производства. Комплексные решения для оконных, дверных, фасадных и интерьерных конструкций.</p>
-      </div>
-      <div>
-        <h5>Продукция</h5>
-        <ul class="footer-links">
-          <li><a href="#">Подъёмно-сдвижные системы</a></li>
-          <li><a href="#">Раздвижные системы</a></li>
-          <li><a href="#">Складные системы</a></li>
-          <li><a href="#">Оконно-дверные системы</a></li>
-          <li><a href="#">ПВХ-системы</a></li>
-          <li><a href="#">Пивотные двери</a></li>
-          <li><a href="#">Перегородки</a></li>
-          <li><a href="#">Фасадные витражи</a></li>
-          <li><a href="#">Перголы и гильотины</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Компания</h5>
-        <ul class="footer-links">
-          <li><a href="#">О компании</a></li>
-          <li><a href="#">Услуги</a></li>
-          <li><a href="#">Партнёры</a></li>
-          <li><a href="#">Сертификаты</a></li>
-          <li><a href="#">Реализованные проекты</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Контакты</h5>
-        <div class="footer-contact-item">
-          <div class="footer-contact-label">Телефон</div>
-          <div class="footer-contact-val"><a href="tel:+77010559900">+7 701 055 99 00</a></div>
-        </div>
-        <div class="footer-contact-item">
-          <div class="footer-contact-label">Email</div>
-          <div class="footer-contact-val"><a href="mailto:info@bestprof.kz">info@bestprof.kz</a></div>
-        </div>
-        <div class="footer-contact-item">
-          <div class="footer-contact-label">Адрес</div>
-          <div class="footer-contact-val">г. Алматы, ул. Новгородская, 172Б</div>
-        </div>
-        <div class="footer-contact-item">
-          <div class="footer-contact-label">Режим работы</div>
-          <div class="footer-contact-val">Пн–Пт: 09:00 – 18:00</div>
-        </div>
-        <div class="footer-contact-item" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
-          <div class="footer-contact-label">Реквизиты</div>
-          <div class="footer-contact-val" style="font-size: 0.78rem; line-height: 1.8;">
-            ТОО «BestProf»<br>
-            БИН: 930840000844<br>
-            АО «Kaspi Bank»<br>
-            КБе: 17 · БИК: CASPKZKA<br>
-            ИИК: KZ15722S000023548941
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 ТОО «BestProf». БИН: 930840000844. Все права защищены. Производитель алюминиевых и пластиковых профильных систем.</span>
-      <div class="footer-socials">
-        <a href="#" class="footer-social"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-        <a href="#" class="footer-social"><svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 01-1.93.07 4.28 4.28 0 004 2.98 8.521 8.521 0 01-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
-        <a href="#" class="footer-social"><svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.82-.26.82-.577 0-.286-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
-      </div>
-    </div>
+    <div class="footer-main" id="footerMain"></div>
+    <div class="footer-bottom" id="footerBottom"></div>
   </div>
 </footer>
 
 
 <!-- Scripts -->
+<script src="js/data.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
