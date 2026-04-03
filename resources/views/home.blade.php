@@ -106,18 +106,68 @@
       </div>
     @endif
 
-    <div class="cat-strip" style="margin-bottom:2rem;border-radius:8px;border:1px solid var(--border);">
-      <div class="container cat-strip-inner" style="padding:0;" id="catalogTabs">
-        <span class="cat-tab active" data-filter="">Все системы</span>
-        @foreach($rootCategories as $cat)
-          <span class="cat-tab" data-filter="{{ $cat->id }}">{{ $cat->name }}</span>
-          @foreach($cat->children as $child)
-            <span class="cat-tab cat-tab-sub" data-filter="{{ $child->id }}">{{ $child->name }}</span>
-          @endforeach
-        @endforeach
-      </div>
+    {{-- 3 main category buttons --}}
+    @php
+      $aluCat = $rootCategories->firstWhere('slug', 'alu');
+      $pvhCat = $rootCategories->firstWhere('slug', 'pvh');
+      $furnituraCat = null;
+      if ($pvhCat) {
+        $furnituraCat = $pvhCat->children->first(fn($c) => mb_strtolower($c->name) === 'фурнитура');
+      }
+      $pvhChildrenNoFurn = $pvhCat ? $pvhCat->children->filter(fn($c) => mb_strtolower($c->name) !== 'фурнитура') : collect();
+
+      $buttons = [];
+      if ($aluCat) $buttons[] = ['cat' => $aluCat, 'icon' => '<svg viewBox="0 0 40 40" fill="none"><rect x="6" y="3" width="12" height="34" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="22" y="3" width="12" height="34" rx="2" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="3" x2="12" y2="37" stroke="currentColor" stroke-width="0.8" opacity="0.4"/><line x1="28" y1="3" x2="28" y2="37" stroke="currentColor" stroke-width="0.8" opacity="0.4"/></svg>', 'desc' => 'Gold, AlProf и другие системы'];
+      if ($pvhCat) $buttons[] = ['cat' => $pvhCat, 'icon' => '<svg viewBox="0 0 40 40" fill="none"><path d="M5 35V9l15-6 15 6v26" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13 35V18m14 17V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M5 9l15 5 15-5" stroke="currentColor" stroke-width="1" opacity="0.4"/></svg>', 'desc' => 'Sapa, Funke, Seiger WDF, Grunder'];
+      if ($furnituraCat) $buttons[] = ['cat' => $furnituraCat, 'icon' => '<svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="6" stroke="currentColor" stroke-width="1.8"/><path d="M20 20v14M14 28h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10 8l4 4M30 8l-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/></svg>', 'desc' => 'Ручки, петли, замки и другое'];
+    @endphp
+
+    <div class="catalog-buttons reveal" id="catalogButtons">
+      @foreach($buttons as $btn)
+        <button class="catalog-btn" data-cat-id="{{ $btn['cat']->id }}" data-cat-slug="{{ $btn['cat']->slug }}">
+          <div class="catalog-btn-icon">{!! $btn['icon'] !!}</div>
+          <div class="catalog-btn-text">
+            <span class="catalog-btn-name">{{ $btn['cat']->name }}</span>
+            <span class="catalog-btn-desc">{{ $btn['desc'] }}</span>
+          </div>
+          <svg class="catalog-btn-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      @endforeach
     </div>
 
+    {{-- Subcategory row (appears on click) --}}
+    <div class="catalog-subcats" id="catalogSubcats" style="display:none;">
+      <div class="catalog-subcats-inner" id="catalogSubcatsInner"></div>
+    </div>
+
+    {{-- Hidden data for JS --}}
+    <script type="application/json" id="catalogTreeData">
+    @php
+      $treeData = [];
+      if ($aluCat) {
+        $treeData[$aluCat->id] = $aluCat->children->map(fn($c) => [
+          'id' => $c->id,
+          'name' => $c->name,
+          'slug' => $c->slug,
+          'children' => $c->children->map(fn($s) => ['id' => $s->id, 'name' => $s->name, 'slug' => $s->slug])->values()
+        ])->values();
+      }
+      if ($pvhCat) {
+        $treeData[$pvhCat->id] = $pvhChildrenNoFurn->map(fn($c) => [
+          'id' => $c->id,
+          'name' => $c->name,
+          'slug' => $c->slug,
+          'children' => $c->children->map(fn($s) => ['id' => $s->id, 'name' => $s->name, 'slug' => $s->slug])->values()
+        ])->values();
+      }
+      if ($furnituraCat) {
+        $treeData[$furnituraCat->id] = [];
+      }
+    @endphp
+    {!! json_encode($treeData) !!}
+    </script>
+
+    {{-- Products grid --}}
     <div class="products-grid" id="productsGrid">
       @foreach($products as $product)
         @php
@@ -160,6 +210,13 @@
           </div>
         </div>
       @endforeach
+    </div>
+
+    <div style="text-align:center;margin-top:2rem;" class="reveal">
+      <a href="{{ route('catalog') }}" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2rem;background:var(--blue);color:#fff;border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:background 0.2s;">
+        Перейти в каталог
+        <svg viewBox="0 0 14 14" width="14" height="14"><path d="M3 7h8m-3-3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -252,21 +309,303 @@
 </section>
 @endsection
 
+@push('styles')
+<style>
+  .catalog-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .catalog-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.75rem;
+    background: #fff;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.25s;
+    min-width: 240px;
+    text-align: left;
+  }
+  .catalog-btn:hover {
+    border-color: var(--blue);
+    box-shadow: 0 6px 24px rgba(25, 62, 234, 0.1);
+    transform: translateY(-2px);
+  }
+  .catalog-btn.active {
+    border-color: var(--blue);
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8edff 100%);
+    box-shadow: 0 4px 20px rgba(25, 62, 234, 0.12);
+  }
+  .catalog-btn-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .catalog-btn-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+  .catalog-btn.active .catalog-btn-icon {
+    background: var(--blue);
+  }
+  .catalog-btn-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+  }
+  .catalog-btn-name {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--dark);
+  }
+  .catalog-btn-desc {
+    font-size: 0.78rem;
+    color: var(--gray-400);
+    line-height: 1.3;
+  }
+  .catalog-btn-arrow {
+    color: var(--gray-300);
+    transition: transform 0.25s, color 0.25s;
+    flex-shrink: 0;
+  }
+  .catalog-btn.active .catalog-btn-arrow {
+    transform: rotate(90deg);
+    color: var(--blue);
+  }
+
+  .catalog-subcats {
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .catalog-subcats-inner {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+  }
+  .subcat-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.25rem;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .subcat-chip:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: #f5f7ff;
+  }
+  .subcat-chip.active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+  }
+  .subcat-chip-count {
+    font-size: 0.72rem;
+    background: rgba(0,0,0,0.06);
+    padding: 0.1rem 0.45rem;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .subcat-chip.active .subcat-chip-count {
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* Sub-subcategory row */
+  .catalog-sub-subcats {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0.75rem 0 0 0;
+  }
+  .sub-subcat-chip {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--gray-400);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .sub-subcat-chip:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+  .sub-subcat-chip.active {
+    background: var(--dark);
+    border-color: var(--dark);
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .catalog-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    .catalog-btn {
+      min-width: 100%;
+    }
+  }
+</style>
+@endpush
+
 @push('scripts')
 <script>
-// Catalog tabs filter
-document.querySelectorAll('.cat-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    const filter = tab.dataset.filter;
-    document.querySelectorAll('.product-card').forEach(card => {
-      if (!filter) { card.style.display = ''; return; }
-      const ids = (card.dataset.catIds || '').split(',');
-      card.style.display = ids.includes(filter) ? '' : 'none';
+(function() {
+  var treeData = JSON.parse(document.getElementById('catalogTreeData').textContent);
+  var buttons = document.querySelectorAll('.catalog-btn');
+  var subcatsWrap = document.getElementById('catalogSubcats');
+  var subcatsInner = document.getElementById('catalogSubcatsInner');
+  var cards = document.querySelectorAll('.product-card');
+  var activeMainId = null;
+  var activeSubId = null;
+
+  function filterProducts(filterIds) {
+    cards.forEach(function(card) {
+      if (!filterIds) { card.style.display = ''; return; }
+      var ids = (card.dataset.catIds || '').split(',');
+      var show = filterIds.some(function(fid) { return ids.includes(String(fid)); });
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  function collectDescendantIds(catId) {
+    var ids = [catId];
+    var children = treeData[catId];
+    if (children) {
+      children.forEach(function(ch) {
+        ids.push(ch.id);
+        if (ch.children) ch.children.forEach(function(s) { ids.push(s.id); });
+      });
+    }
+    return ids;
+  }
+
+  function renderSubcats(mainId) {
+    var children = treeData[mainId];
+    subcatsInner.innerHTML = '';
+    if (!children || children.length === 0) {
+      subcatsWrap.style.display = 'none';
+      return;
+    }
+
+    // "Все" chip
+    var allChip = document.createElement('span');
+    allChip.className = 'subcat-chip active';
+    allChip.textContent = 'Все';
+    allChip.addEventListener('click', function() {
+      activeSubId = null;
+      document.querySelectorAll('.subcat-chip').forEach(function(c) { c.classList.remove('active'); });
+      allChip.classList.add('active');
+      filterProducts(collectDescendantIds(mainId));
+      removeSubs();
+    });
+    subcatsInner.appendChild(allChip);
+
+    children.forEach(function(ch) {
+      var chip = document.createElement('span');
+      chip.className = 'subcat-chip';
+      chip.textContent = ch.name;
+      chip.dataset.catId = ch.id;
+      chip.addEventListener('click', function() {
+        activeSubId = ch.id;
+        document.querySelectorAll('.subcat-chip').forEach(function(c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+
+        var subIds = [ch.id];
+        if (ch.children) ch.children.forEach(function(s) { subIds.push(s.id); });
+        filterProducts(subIds);
+
+        // render sub-subcategories
+        removeSubs();
+        if (ch.children && ch.children.length > 0) {
+          renderSubSubs(ch);
+        }
+      });
+      subcatsInner.appendChild(chip);
+    });
+
+    subcatsWrap.style.display = '';
+  }
+
+  function removeSubs() {
+    var existing = document.getElementById('catalogSubSubcats');
+    if (existing) existing.remove();
+  }
+
+  function renderSubSubs(parentCh) {
+    removeSubs();
+    var row = document.createElement('div');
+    row.className = 'catalog-sub-subcats';
+    row.id = 'catalogSubSubcats';
+
+    parentCh.children.forEach(function(sub) {
+      var chip = document.createElement('span');
+      chip.className = 'sub-subcat-chip';
+      chip.textContent = sub.name;
+      chip.addEventListener('click', function() {
+        document.querySelectorAll('.sub-subcat-chip').forEach(function(c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+        filterProducts([sub.id]);
+      });
+      row.appendChild(chip);
+    });
+
+    subcatsInner.parentNode.insertBefore(row, subcatsInner.nextSibling);
+  }
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var catId = parseInt(btn.dataset.catId);
+
+      if (activeMainId === catId) {
+        // deselect
+        btn.classList.remove('active');
+        subcatsWrap.style.display = 'none';
+        removeSubs();
+        activeMainId = null;
+        activeSubId = null;
+        filterProducts(null);
+        return;
+      }
+
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeMainId = catId;
+      activeSubId = null;
+
+      filterProducts(collectDescendantIds(catId));
+      renderSubcats(catId);
     });
   });
-});
+})();
+
 // Phone mask
 document.querySelector('input[type="tel"]')?.addEventListener('input', e => {
   let v = e.target.value.replace(/\D/g, '');
