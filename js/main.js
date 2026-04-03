@@ -98,12 +98,29 @@ const App = {
   CatalogTabs: {
     init() {
       const tabs = document.querySelectorAll('.cat-tab');
+      const cards = document.querySelectorAll('.product-card[data-category]');
       if (!tabs.length) return;
+
+      const categoryMap = {
+        'Gold (ALU)': 'gold',
+        'AlProf (ALU)': 'alprof',
+        'ПВХ-системы': 'pvh',
+        'ПВХ-фурнитура': 'pvh-furn'
+      };
 
       tabs.forEach(tab => {
         tab.addEventListener('click', () => {
           tabs.forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
+
+          const filter = categoryMap[tab.textContent.trim()];
+          cards.forEach(card => {
+            if (!filter || card.dataset.category === filter) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
         });
       });
     }
