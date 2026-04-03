@@ -37,7 +37,7 @@
           @if($featured->image)
             <img src="{{ asset('storage/' . $featured->image) }}" alt="{{ $featured->title }}">
           @else
-            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f0f4ff,#dbe4ff);display:flex;align-items:center;justify-content:center;">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#e8edff,#d0d9f5);display:flex;align-items:center;justify-content:center;">
               <svg viewBox="0 0 64 64" width="64" height="64" style="color:var(--blue);opacity:0.15;"><rect x="8" y="8" width="48" height="48" rx="6" stroke="currentColor" fill="none" stroke-width="2.5"/><path d="M8 42l14-14 12 12 8-8 14 16" stroke="currentColor" fill="none" stroke-width="2.5"/></svg>
             </div>
           @endif
@@ -72,7 +72,7 @@
             @if($post->image)
               <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
             @else
-              <div style="width:100%;height:100%;background:linear-gradient(135deg,#f0f4ff,#dbe4ff);display:flex;align-items:center;justify-content:center;">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#e8edff,#d0d9f5);display:flex;align-items:center;justify-content:center;">
                 <svg viewBox="0 0 48 48" width="40" height="40" style="color:var(--blue);opacity:0.15;"><rect x="6" y="6" width="36" height="36" rx="4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
               </div>
             @endif

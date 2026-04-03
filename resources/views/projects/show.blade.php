@@ -7,9 +7,11 @@
     @if($project->image)
       <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" style="width:100%;height:100%;object-fit:cover;">
     @else
-      <div style="width:100%;height:100%;background:linear-gradient(135deg,#00074B,#0b1854);"></div>
+      <div style="width:100%;height:100%;background:#00074B;">
+        <div style="width:100%;height:100%;opacity:0.08;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22><rect width=%2260%22 height=%2260%22 fill=%22none%22/><path d=%22M30 0v60M0 30h60%22 stroke=%22white%22 stroke-width=%220.5%22/></svg>');"></div>
+      </div>
     @endif
-    <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,7,75,0.8) 0%,rgba(0,7,75,0.2) 60%,transparent 100%);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,7,75,0.9) 0%,rgba(0,7,75,0.4) 60%,rgba(0,7,75,0.2) 100%);"></div>
     <div class="container" style="position:absolute;bottom:0;left:0;right:0;padding-bottom:2.5rem;color:#fff;">
       <a href="{{ route('projects') }}" style="display:inline-flex;align-items:center;gap:0.4rem;color:rgba(255,255,255,0.7);font-size:0.82rem;font-weight:600;text-decoration:none;margin-bottom:1rem;">
         <svg viewBox="0 0 14 14" width="12" height="12"><path d="M11 7H3m3-3L3 7l3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
@@ -106,7 +108,7 @@
             @if($o->image)
               <img src="{{ asset('storage/' . $o->image) }}" alt="{{ $o->title }}">
             @else
-              <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e);"></div>
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#eef1f8,#dde3f0);"></div>
             @endif
           </div>
           <div class="pj-other-body">

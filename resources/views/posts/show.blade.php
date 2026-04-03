@@ -74,7 +74,7 @@
             @if($r->image)
               <img src="{{ asset('storage/' . $r->image) }}" alt="{{ $r->title }}">
             @else
-              <div style="width:100%;height:100%;background:linear-gradient(135deg,#f0f4ff,#dbe4ff);display:flex;align-items:center;justify-content:center;">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#e8edff,#d0d9f5);display:flex;align-items:center;justify-content:center;">
                 <svg viewBox="0 0 40 40" width="32" height="32" style="color:var(--blue);opacity:0.15;"><rect x="4" y="4" width="32" height="32" rx="4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
               </div>
             @endif

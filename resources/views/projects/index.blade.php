@@ -108,7 +108,7 @@
   .pj-card:hover .pj-card-img img { transform: scale(1.06); }
   .pj-card-placeholder {
     width: 100%; height: 100%;
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    background: linear-gradient(135deg, #00074B, #0b1854);
     display: flex; align-items: center; justify-content: center; color: #fff;
   }
   .pj-card-overlay {
