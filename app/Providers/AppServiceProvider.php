@@ -30,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
             if (!$view->offsetExists('settings')) {
                 $view->with('settings', Setting::all()->pluck('value', 'key'));
             }
+
+            if (!$view->offsetExists('seo')) {
+                $view->with('seo', []);
+            }
         });
     }
 }

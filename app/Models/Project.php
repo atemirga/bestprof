@@ -10,6 +10,7 @@ class Project extends Model
         'title', 'slug', 'description', 'content', 'client',
         'location', 'year', 'image', 'gallery',
         'is_published', 'is_featured', 'sort_order',
+        'meta_title', 'meta_description', 'meta_keywords',
     ];
 
     protected $casts = [

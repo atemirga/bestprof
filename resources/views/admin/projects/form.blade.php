@@ -71,6 +71,7 @@
                         </div>
                     </div>
                 </div>
+                @include('admin.partials.seo-fields', ['model' => $project ?? null])
                 <div class="card mb-4">
                     <div class="card-header fw-semibold">Главное фото</div>
                     <div class="card-body">

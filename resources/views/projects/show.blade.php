@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@push('seo')
+@include('partials.jsonld.breadcrumbs', ['breadcrumbs' => [
+    ['name' => 'Главная', 'url' => route('home')],
+    ['name' => 'Наши работы', 'url' => route('projects')],
+    ['name' => $project->title, 'url' => route('project.show', $project->slug)],
+]])
+@endpush
+
 @section('content')
 {{-- Hero with main image --}}
 <section style="padding-top:5.5rem;position:relative;overflow:hidden;">

@@ -40,6 +40,9 @@ class CategoryController extends Controller
             'badge_color' => ['nullable', 'string', 'max:50'],
             'sort_order' => ['nullable', 'integer'],
             'is_active' => ['nullable', 'boolean'],
+            'meta_title' => ['nullable', 'string', 'max:70'],
+            'meta_description' => ['nullable', 'string', 'max:160'],
+            'meta_keywords' => ['nullable', 'string', 'max:255'],
         ]);
 
         $validated['is_active'] = $request->boolean('is_active');
@@ -99,6 +102,9 @@ class CategoryController extends Controller
             'badge_color' => ['nullable', 'string', 'max:50'],
             'sort_order' => ['nullable', 'integer'],
             'is_active' => ['nullable', 'boolean'],
+            'meta_title' => ['nullable', 'string', 'max:70'],
+            'meta_description' => ['nullable', 'string', 'max:160'],
+            'meta_keywords' => ['nullable', 'string', 'max:255'],
         ]);
 
         $validated['is_active'] = $request->boolean('is_active');

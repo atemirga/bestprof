@@ -27,6 +27,9 @@ class Product extends Model
         'sort_order',
         'is_active',
         'is_featured',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
     ];
 
     protected function casts(): array

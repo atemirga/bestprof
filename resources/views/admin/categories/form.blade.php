@@ -145,6 +145,10 @@
                     </div>
                 </div>
 
+                </div>
+
+                @include('admin.partials.seo-fields', ['model' => $category ?? null])
+
                 <hr class="my-4">
 
                 <div class="d-flex gap-2">

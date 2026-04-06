@@ -12,8 +12,11 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SitemapController;
 
 // ═══════ PUBLIC ═══════
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/catalog', [HomeController::class, 'catalog'])->name('catalog');
 Route::get('/catalog/{category:slug}', [HomeController::class, 'category'])->name('catalog.category');

@@ -18,6 +18,9 @@ class Category extends Model
         'badge_color',
         'sort_order',
         'is_active',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
     ];
 
     protected function casts(): array

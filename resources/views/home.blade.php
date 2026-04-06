@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('seo')
+@include('partials.jsonld.organization')
+@endpush
+
 @section('content')
 {{-- ═══════ HERO ═══════ --}}
 <section class="hero">

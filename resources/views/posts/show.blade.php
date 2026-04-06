@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@push('seo')
+@include('partials.jsonld.article')
+@include('partials.jsonld.breadcrumbs', ['breadcrumbs' => [
+    ['name' => 'Главная', 'url' => route('home')],
+    ['name' => $post->type === 'news' ? 'Новости' : 'Блог', 'url' => $post->type === 'news' ? route('news') : route('blog')],
+    ['name' => $post->title, 'url' => route('post.show', $post->slug)],
+]])
+@endpush
+
 @section('content')
 {{-- Hero --}}
 <section style="padding-top:5.5rem;background:linear-gradient(135deg,#00074B 0%,#050e3a 60%,#0b1854 100%);color:#fff;padding-bottom:2.5rem;">

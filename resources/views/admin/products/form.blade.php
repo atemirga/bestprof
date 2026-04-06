@@ -290,6 +290,8 @@
                     </div>
                 </div>
 
+                @include('admin.partials.seo-fields', ['model' => $product ?? null])
+
                 {{-- Image --}}
                 <div class="card mb-4">
                     <div class="card-header fw-semibold">Изображение</div>

@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+@push('seo')
+@include('partials.jsonld.product')
+@include('partials.jsonld.breadcrumbs', ['breadcrumbs' => [
+    ['name' => 'Главная', 'url' => route('home')],
+    ['name' => 'Каталог', 'url' => route('catalog')],
+    ['name' => $product->category->name ?? '', 'url' => $product->category ? route('catalog.category', $product->category->slug) : '#'],
+    ['name' => $product->name, 'url' => route('product.show', $product->slug)],
+]])
+@endpush
+
 @section('content')
 <section class="section" style="padding-top:7rem;">
   <div class="container">

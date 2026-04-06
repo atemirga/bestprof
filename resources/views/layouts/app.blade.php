@@ -3,9 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ $settings['meta_description'] ?? '' }}">
-  <meta name="keywords" content="{{ $settings['meta_keywords'] ?? '' }}">
-  <title>{{ $settings['site_name'] ?? 'BestProf' }} — {{ $settings['site_tagline'] ?? '' }}</title>
+
+  @php
+    $siteName = $settings['site_name'] ?? 'BestProf';
+    $seoTitle = isset($seo['title']) ? $seo['title'] . ' — ' . $siteName : $siteName . ' — ' . ($settings['site_tagline'] ?? '');
+    $seoDescription = $seo['description'] ?? $settings['meta_description'] ?? '';
+    $seoKeywords = $seo['keywords'] ?? $settings['meta_keywords'] ?? '';
+    $seoImage = $seo['image'] ?? ($settings['og_image'] ?? null ? asset('storage/' . $settings['og_image']) : asset('img/og-default.jpg'));
+    $seoCanonical = $seo['canonical'] ?? url()->current();
+    $seoType = $seo['type'] ?? 'website';
+  @endphp
+
+  <title>{{ $seoTitle }}</title>
+  <meta name="description" content="{{ $seoDescription }}">
+  <meta name="keywords" content="{{ $seoKeywords }}">
+  <link rel="canonical" href="{{ $seoCanonical }}">
+
+  {{-- Open Graph --}}
+  <meta property="og:type" content="{{ $seoType }}">
+  <meta property="og:title" content="{{ $seoTitle }}">
+  <meta property="og:description" content="{{ $seoDescription }}">
+  <meta property="og:url" content="{{ $seoCanonical }}">
+  <meta property="og:site_name" content="{{ $siteName }}">
+  <meta property="og:locale" content="ru_RU">
+  @if($seoImage)
+  <meta property="og:image" content="{{ $seoImage }}">
+  @endif
+
+  {{-- Twitter Card --}}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $seoTitle }}">
+  <meta name="twitter:description" content="{{ $seoDescription }}">
+  @if($seoImage)
+  <meta name="twitter:image" content="{{ $seoImage }}">
+  @endif
+
+  {{-- Search Engine Verification --}}
+  @if(!empty($settings['google_verification']))
+  <meta name="google-site-verification" content="{{ $settings['google_verification'] }}">
+  @endif
+  @if(!empty($settings['yandex_verification']))
+  <meta name="yandex-verification" content="{{ $settings['yandex_verification'] }}">
+  @endif
+
+  @stack('seo')
+
   <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon.svg') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -156,5 +198,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 @stack('scripts')
+
+{{-- Google Analytics --}}
+@if(!empty($settings['google_analytics']))
+{!! $settings['google_analytics'] !!}
+@endif
+
+{{-- Yandex Metrika --}}
+@if(!empty($settings['yandex_metrika']))
+{!! $settings['yandex_metrika'] !!}
+@endif
 </body>
 </html>
